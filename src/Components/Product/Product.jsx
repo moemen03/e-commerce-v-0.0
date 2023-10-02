@@ -8,6 +8,7 @@ function Product({ product }) {
 
     let navigate = useNavigate()
     let { isUserLoggedIn, setIsUserLoggedIn } = useContext(AuthContext)
+     
     async function addProductToCart(productId) {
         let res = await axios.post("https://ecommerce.routemisr.com/api/v1/cart", {
             productId
@@ -37,11 +38,11 @@ function Product({ product }) {
         <div className="product p-3 overflow-hidden">
             <Link to={'/productDetails/' + product._id}>
                 <img className='w-100' src={product.imageCover} alt="" />
-                <h2>{product.title}</h2>
+                <h3>{product.title.split(" ").slice(0,3).join(" ")}</h3>
                 <h5 className='text-main font-sm'>{product.category.name}</h5>
                 <p className='d-flex justify-content-between'>
                     <span>Price: {product.price}EGP</span>
-                    <span><i className='fas fa-star text-main'></i> {product.ratingsAverage}</span>
+                    <span><i className='fas fa-star rating-color'></i> {product.ratingsAverage}</span>
                 </p>
             </Link>
             <button onClick={() => addProductToCart(product._id)} className='btn bg-main text-white w-100 my-2'>Add to cart</button>

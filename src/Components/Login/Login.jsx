@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Formik, useFormik } from 'formik'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import { AuthContext } from '../../Contexts/AuthContext';
@@ -11,7 +11,9 @@ function Login() {
   let [errorMessage, setErrorMessage] = useState("")
   let [isLoading, setIsLoading] = useState(false)
 
-  let { setIsUserLoggedIn } = useContext(AuthContext)
+  let { setIsUserLoggedIn , isUserLoggedIn } = useContext(AuthContext)
+
+
 
   async function login(values) {
     setErrorMessage('')
@@ -21,6 +23,7 @@ function Login() {
       setIsLoading(false)
     })
     if (data.message == "success") {
+      // console.log(data.token);
       localStorage.setItem("token", data.token)
       Cookies.set("token", data.token)
       setIsUserLoggedIn(true)

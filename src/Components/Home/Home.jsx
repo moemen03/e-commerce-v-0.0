@@ -4,6 +4,7 @@ import Product from '../Product/Product'
 import MainSlider from '../MainSlider/MainSlider'
 import { useQuery } from 'react-query'
 import { Helmet } from 'react-helmet'
+import SubSlider from '../subSlider/subSlider'
 
 function Home() {
 
@@ -35,7 +36,7 @@ function Home() {
 
     console.log(isFetching);
 
-
+    
 
 
     return (
@@ -44,7 +45,7 @@ function Home() {
                 <title>Home</title>
             </Helmet>
             <MainSlider />
-
+            <SubSlider/>
             <button onClick={refetch} className='btn bg-main text-white w-100 text-center'>Get All Products</button>
             <div className="row">
                 {data?.data.data.map((product) => {

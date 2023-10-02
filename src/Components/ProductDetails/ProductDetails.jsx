@@ -67,11 +67,12 @@ function ProductDetails() {
                             
                             <h2>{productDetails?.title}</h2>
                             <h5 className='text-main font-sm'>{productDetails?.category.name}</h5>
-                            <p>
-                                <span>Price: {productDetails?.price}EGP</span>
-                                <span><i className='fas fa-star'></i>{productDetails?.ratingsAverage}</span>
+                            <p>{productDetails?.description}</p>
+                            <p className='d-flex justify-content-between'>
+                                <span>Price: {productDetails?.price} EGP</span>
+                                <span><i className='fas fa-star rating-color'></i>{productDetails?.ratingsAverage}</span>
                             </p>
-                            <button className='btn bg-main text-white'>Add to cart</button>
+                            <button className='btn bg-main text-white w-100 mt-2'>Add to cart</button>
                         </div>
                     </div> :
                         <div className='alert alert-danger text-center py-3 my-5'>

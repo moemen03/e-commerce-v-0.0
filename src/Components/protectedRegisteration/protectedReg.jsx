@@ -3,16 +3,16 @@ import { AuthContext } from '../../Contexts/AuthContext'
 import Login from '../Login/Login'
 import { Navigate, useNavigate } from 'react-router-dom'
 
-function ProtectedRoute({ children }) {
+function ProtectedReg({ children }) {
     let navigate = useNavigate()
     let { isUserLoggedIn, setIsUserLoggedIn } = useContext(AuthContext)
 
-    if (isUserLoggedIn) {
+    if (!isUserLoggedIn) {
         return children
     } else {
-        return <Navigate to={'/login'}/>
+        return <Navigate to={'/home'}/>
     }
 
 }
 
-export default ProtectedRoute
+export default ProtectedReg

@@ -16,6 +16,7 @@ import { Navigate, RouterProvider, createBrowserRouter, createHashRouter } from 
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Address from './Components/Address/Address';
+import ProtectedReg from './Components/protectedRegisteration/protectedReg';
 
 
 
@@ -35,8 +36,8 @@ function App() {
         { path: 'productDetails/:id', element: <ProtectedRoute><ProductDetails /> </ProtectedRoute> },
         { path: 'address/:cartId', element: <ProtectedRoute><Address /> </ProtectedRoute> },
 
-        { path: 'login', element: <Login /> },
-        { path: 'register', element: <Register /> },
+        { path: 'login', element: <ProtectedReg><Login /></ProtectedReg> },
+        { path: 'register', element: <ProtectedReg><Register /></ProtectedReg> },
 
         { path: '*', element: <NotFound /> }
       ]

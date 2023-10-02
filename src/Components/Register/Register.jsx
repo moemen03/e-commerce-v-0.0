@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { Formik, useFormik } from 'formik'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
+import { AuthContext } from '../../Contexts/AuthContext';
 
 function Register() {
   let navigate = useNavigate()
   let [errorMessage, setErrorMessage] = useState("")
   let [isLoading, setIsLoading] = useState(false)
 
+  let { setIsUserLoggedIn , isUserLoggedIn } = useContext(AuthContext)
 
 
   async function register(values) {
@@ -23,7 +25,7 @@ function Register() {
     if (data.message == "success") {
       navigate('/login')
     }
-    setIsLoading(false)
+    setIsLoading(false) 
   }
 
 
@@ -36,7 +38,7 @@ function Register() {
     phone: Yup.string().required('Phone number in required').matches(/^01[0125][0-9]{8}$/, 'Enter valid number')
   })
 
-  
+
   let formik = useFormik({
     initialValues: {
       name: '',
