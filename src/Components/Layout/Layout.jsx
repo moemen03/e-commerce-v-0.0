@@ -30,7 +30,7 @@ function Layout() {
           </Offline>
           <Toaster />
         </AuthContextProvider>
-        <ReactQueryDevtools position='bottom-right'/>
+        {/* <ReactQueryDevtools position='bottom-right'/> */}
       </QueryClientProvider>
     </>
   )

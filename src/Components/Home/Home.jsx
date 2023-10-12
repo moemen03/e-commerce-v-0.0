@@ -28,9 +28,7 @@ function Home() {
 
     let { data, isError, isFetched, isFetching, isLoading, refetch } = useQuery('products', getAllProducts, {
         cacheTime: 5000,
-        // staleTime: 10000,
-        // refetchInterval: 15000,
-        // refetchOnMount: false,
+        refetchInterval:50000,
         enabled: true
     })
 

@@ -17,6 +17,9 @@ import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Address from './Components/Address/Address';
 import ProtectedReg from './Components/protectedRegisteration/protectedReg';
+import ForgetPassword from './Components/ForgetPassword/ForgetPassword';
+import VerificationCode from './Components/VerificationCode/VerificationCode';
+import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 
 
@@ -38,7 +41,9 @@ function App() {
 
         { path: 'login', element: <ProtectedReg><Login /></ProtectedReg> },
         { path: 'register', element: <ProtectedReg><Register /></ProtectedReg> },
-
+        {path: 'forgetpassword' , element : <ProtectedReg><ForgetPassword/></ProtectedReg>},
+        {path: 'verificationCode' , element : <ProtectedReg><VerificationCode/></ProtectedReg>},
+        {path: 'resetpassword' , element : <ProtectedReg><ResetPassword/></ProtectedReg>},
         { path: '*', element: <NotFound /> }
       ]
     }

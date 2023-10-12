@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Contexts/AuthContext'
+import { useQueries , useQuery} from 'react-query'
 
 function Cart() {
 
@@ -19,25 +20,54 @@ function Cart() {
   }, [])
 
 
-  async function getUserCartProducts() {
-    let res = await axios.get("https://ecommerce.routemisr.com/api/v1/cart", {
-      headers: {
-        token: localStorage.getItem("token")
-      }
-    }).catch((err) => {
-      console.log(err.response.data.message);
-      setErrorMessage(err.response.data.message)
-    })
 
-    console.log(res);
-    if (res) {
-      setTotalCartPrice(res?.data.data.totalCartPrice)
-      setProducts(res?.data.data.products)
-      setCartId(res?.data.data._id)
-      setNumOfCartItems(res?.numOfCartItems)
-    }
+  function getUserCartProducts() {
+    return (
+            axios.get("https://ecommerce.routemisr.com/api/v1/cart", {
+              headers: {
+                token: localStorage.getItem("token")
+              }
+            }).catch((err) => {
+              console.log(err.response.data.message);
+              setErrorMessage(err.response.data.message)
+            })
+            
 
-  }
+    )
+            // if (res) {
+            //   setTotalCartPrice(res?.data.data.totalCartPrice)
+            //   setProducts(res?.data.data.products)
+            //   setCartId(res?.data.data._id)
+            //   setNumOfCartItems(res?.numOfCartItems)
+            // }
+}
+let { data, isError, isFetched, isFetching, isLoading, refetch } = useQuery('products', getUserCartProducts, {
+  cacheTime: 5000,
+  refetchInterval:50000,
+  enabled: true
+})
+console.log(data);
+
+
+  // async function getUserCartProducts() {
+  //   let res = await axios.get("https://ecommerce.routemisr.com/api/v1/cart", {
+  //     headers: {
+  //       token: localStorage.getItem("token")
+  //     }
+  //   }).catch((err) => {
+  //     console.log(err.response.data.message);
+  //     setErrorMessage(err.response.data.message)
+  //   })
+
+  //   console.log(res);
+  //   if (res) {
+  //     setTotalCartPrice(res?.data.data.totalCartPrice)
+  //     setProducts(res?.data.data.products)
+  //     setCartId(res?.data.data._id)
+  //     setNumOfCartItems(res?.numOfCartItems)
+  //   }
+
+  // }
 
   async function removeCartProduct(productId) {
     let res = await axios.delete("https://ecommerce.routemisr.com/api/v1/cart/" + productId, {

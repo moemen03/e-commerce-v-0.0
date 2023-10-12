@@ -16,7 +16,9 @@ body {
 .rating-color {
   color: var(--rating-color);
 }
-
+.bg-light-red{
+  background-color: rgb(255, 90, 90);
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -83,4 +85,17 @@ a{
 .mmm{
   margin-top: 100px !important;
   min-height: 200px;
+}
+.sss{
+  font-size: 14px;
+  font-weight: bold;
+  width: 30%;
+  padding: 10px 10px 10px 5px;
+  border-bottom: solid 1px #0aad0a64;
+}
+.forgetLink{
+  transition: 0.5s;
+}
+.forgetLink:hover{
+  color: #0aad0a;
 }

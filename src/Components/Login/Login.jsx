@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Formik, useFormik } from 'formik'
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import { AuthContext } from '../../Contexts/AuthContext';
 import Cookies from 'js-cookie';
@@ -73,6 +73,9 @@ function Login() {
             : <button type='submit' className='btn bg-main text-white ms-auto d-block'>login</button>
           }
 
+          <Link to="/forgetpassword" >
+            <p className='forgetLink d-inline-block'>Forget Password...?</p>
+          </Link>
 
         </form>
       </div>
